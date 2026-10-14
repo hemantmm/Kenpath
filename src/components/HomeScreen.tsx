@@ -46,7 +46,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
   return (
     <div className="flex-1 space-y-4 p-4 pb-12 animate-slide-up">
-      {/* Level & XP Progress Card */}
       <div className="rounded-2xl border border-slate-200/90 bg-white p-4 shadow-sm">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -77,7 +76,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </button>
         </div>
 
-        {/* Progress bar to next level */}
         <div className="mt-3">
           <div className="flex justify-between text-[11px] font-medium text-slate-500 mb-1">
             <span>
@@ -96,7 +94,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
       </div>
 
-      {/* Streak 7-Day Activity Strip */}
       <div className="rounded-2xl border border-orange-100 bg-gradient-to-b from-orange-50/60 to-white p-4 shadow-sm">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
@@ -123,7 +120,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           )}
         </div>
 
-        {/* 7-Day Dots */}
         <div className="grid grid-cols-7 gap-1.5 pt-1">
           {weekDays.map((d) => (
             <div
@@ -160,7 +156,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
       </div>
 
-      {/* Main Challenge Card */}
       {isCompletedToday ? (
         <CompletedTodayCard
           currentStreak={userState.currentStreak}
@@ -182,7 +177,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               Digital Safety & Money Smarts
             </h3>
             <p className="mt-1 text-xs text-indigo-100 leading-relaxed">
-              Answer 5 simple everyday questions. Learn how to protect your money, save phone data, and earn real points.
+              Answer 5 simple everyday questions. Learn how to protect your money, save phone data, and earn points and badges.
             </p>
 
             <div className="mt-4 flex items-center justify-between border-t border-white/15 pt-3">
@@ -199,7 +194,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               </span>
             </div>
 
-            {/* Big Thumb-Friendly CTA Button (min 56px height) */}
             <button
               onClick={() => {
                 sounds.playClick(userState.soundEnabled);
@@ -214,7 +208,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
       )}
 
-      {/* Badges Preview Card */}
       <div className="rounded-2xl border border-slate-200/90 bg-white p-4 shadow-sm">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
@@ -237,7 +230,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </button>
         </div>
 
-        {/* Badges row */}
         <div className="grid grid-cols-3 gap-2">
           {BADGES.slice(0, 3).map((badge) => {
             const isUnlocked = userState.unlockedBadgeIds.includes(badge.id);
@@ -264,7 +256,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
       </div>
 
-      {/* Evaluator / Reviewer Sandbox Controls */}
       <div className="rounded-2xl border border-slate-200 bg-slate-50/90 p-3.5 text-xs text-slate-600">
         <div className="flex items-center justify-between mb-1.5 font-bold text-slate-800">
           <div className="flex items-center gap-1.5">

@@ -1,8 +1,3 @@
-/**
- * Web Audio API synthesizer for instant, zero-bandwidth sound feedback.
- * No audio files are downloaded, preserving mobile data on modest devices.
- */
-
 class SoundController {
   private ctx: AudioContext | null = null;
 
@@ -27,7 +22,6 @@ class SoundController {
       if (!ctx) return;
       const now = ctx.currentTime;
 
-      // Note 1: E5 (659Hz)
       const osc1 = ctx.createOscillator();
       const gain1 = ctx.createGain();
       osc1.type = 'sine';
@@ -39,7 +33,6 @@ class SoundController {
       osc1.start(now);
       osc1.stop(now + 0.15);
 
-      // Note 2: A5 (880Hz)
       const osc2 = ctx.createOscillator();
       const gain2 = ctx.createGain();
       osc2.type = 'sine';
@@ -62,7 +55,6 @@ class SoundController {
       if (!ctx) return;
       const now = ctx.currentTime;
 
-      // Gentle low double-buzz (non-punitive)
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'triangle';
@@ -85,7 +77,7 @@ class SoundController {
       const ctx = this.getContext();
       if (!ctx) return;
       const now = ctx.currentTime;
-      const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
+      const notes = [523.25, 659.25, 783.99, 1046.5];
 
       notes.forEach((freq, idx) => {
         const osc = ctx.createOscillator();

@@ -45,7 +45,6 @@ export const CompletedTodayCard: React.FC<CompletedTodayCardProps> = ({
         </div>
       </div>
 
-      {/* Streak Protection Status */}
       <div className="mt-4 flex items-center justify-between rounded-xl bg-emerald-100/70 p-3 text-xs text-emerald-900 font-medium">
         <div className="flex items-center gap-1.5">
           <Flame className="h-4 w-4 fill-orange-500 text-orange-500" />
@@ -54,7 +53,6 @@ export const CompletedTodayCard: React.FC<CompletedTodayCardProps> = ({
         <span className="text-emerald-700 font-semibold">Active</span>
       </div>
 
-      {/* Countdown Timer */}
       <div className="mt-3 flex items-center justify-between rounded-xl border border-slate-200/80 bg-slate-50/70 p-3">
         <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
           <Clock className="h-4 w-4 text-indigo-600" />
@@ -65,7 +63,6 @@ export const CompletedTodayCard: React.FC<CompletedTodayCardProps> = ({
         </span>
       </div>
 
-      {/* Review CTA */}
       <div className="mt-4 pt-2">
         <button
           onClick={onReviewQuiz}

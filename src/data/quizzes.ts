@@ -1,7 +1,6 @@
 import { DailyQuiz } from '../types';
 
 export const DAILY_QUIZZES: Record<string, DailyQuiz> = {
-  // Default / evergreen daily quiz
   default: {
     date: '2026-10-12',
     title: 'Daily Micro-Skills',
@@ -78,7 +77,6 @@ export const DAILY_QUIZZES: Record<string, DailyQuiz> = {
 };
 
 export function getDailyQuizForDate(dateStr: string): DailyQuiz {
-  // If specific date quiz exists, return it; otherwise return default with updated date
   if (DAILY_QUIZZES[dateStr]) {
     return DAILY_QUIZZES[dateStr];
   }

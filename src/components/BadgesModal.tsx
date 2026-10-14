@@ -29,7 +29,6 @@ export const BadgesModal: React.FC<BadgesModalProps> = ({
         aria-modal="true"
         aria-labelledby="badges-modal-title"
       >
-        {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
@@ -53,7 +52,6 @@ export const BadgesModal: React.FC<BadgesModalProps> = ({
           </button>
         </div>
 
-        {/* Badges Grid */}
         <div className="grid grid-cols-1 gap-3 py-4">
           {BADGES.map((badge) => {
             const isUnlocked = unlockedBadgeIds.includes(badge.id);
@@ -67,7 +65,6 @@ export const BadgesModal: React.FC<BadgesModalProps> = ({
                     : 'border-slate-200 bg-slate-50/70 opacity-75'
                 }`}
               >
-                {/* Badge Icon */}
                 <div
                   className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-2xl shadow-sm ${
                     isUnlocked
@@ -78,7 +75,6 @@ export const BadgesModal: React.FC<BadgesModalProps> = ({
                   {badge.icon}
                 </div>
 
-                {/* Badge Details */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5">
                     <h3 className="font-semibold text-sm text-slate-900 truncate">
@@ -102,7 +98,6 @@ export const BadgesModal: React.FC<BadgesModalProps> = ({
                   </p>
                 </div>
 
-                {/* Points Reward Tag */}
                 <div className="shrink-0 text-right">
                   <span
                     className={`inline-block rounded-lg px-2 py-1 text-xs font-bold ${
@@ -119,7 +114,6 @@ export const BadgesModal: React.FC<BadgesModalProps> = ({
           })}
         </div>
 
-        {/* Footer */}
         <div className="pt-2">
           <button
             onClick={onClose}

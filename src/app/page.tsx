@@ -25,11 +25,9 @@ export default function App() {
   const [isPracticeMode, setIsPracticeMode] = useState(false);
   const [lastResult, setLastResult] = useState<QuizSubmissionResult | null>(null);
 
-  // Modals
   const [badgesOpen, setBadgesOpen] = useState(false);
   const [ledgerOpen, setLedgerOpen] = useState(false);
 
-  // Hydrate on mount
   useEffect(() => {
     const loaded = loadUserState();
     setUserState(loaded);
@@ -57,7 +55,6 @@ export default function App() {
     const currentQuiz = getDailyQuizForDate(todayStr);
 
     if (isPracticeMode) {
-      // In practice mode, we just return home without changing points
       setView('home');
       return;
     }
@@ -76,7 +73,6 @@ export default function App() {
   };
 
   const handleSimulateYesterday = () => {
-    // Sets last completed date to yesterday so user can test the streak increment immediately!
     const simulated = simulateYesterdayCompletion(2);
     setUserState(simulated);
   };
@@ -104,7 +100,6 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
-      {/* Persistent Header */}
       {view !== 'quiz' && (
         <Header
           totalPoints={userState.totalPoints}
@@ -115,7 +110,6 @@ export default function App() {
         />
       )}
 
-      {/* Main Views */}
       <main className="flex-1 flex flex-col">
         {view === 'home' && (
           <HomeScreen
@@ -148,7 +142,6 @@ export default function App() {
         )}
       </main>
 
-      {/* Badges Modal */}
       <BadgesModal
         unlockedBadgeIds={userState.unlockedBadgeIds}
         currentStreak={userState.currentStreak}
@@ -157,7 +150,6 @@ export default function App() {
         onClose={() => setBadgesOpen(false)}
       />
 
-      {/* Reward Ledger & Real Money Modal */}
       <RewardLedgerModal
         totalPoints={userState.totalPoints}
         history={userState.history}

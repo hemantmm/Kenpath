@@ -27,7 +27,6 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
   onFinish,
 }) => {
   useEffect(() => {
-    // Play celebratory sound and shoot confetti
     sounds.playCelebration(soundEnabled);
 
     try {
@@ -47,7 +46,6 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-50 p-4 pb-24 animate-scale-in">
-      {/* Hero Badge */}
       <div className="mt-4 flex flex-col items-center text-center">
         <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-tr from-amber-400 to-amber-500 text-white shadow-lg shadow-amber-200 animate-pulse-glow">
           <Trophy className="h-10 w-10" />
@@ -65,17 +63,16 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
         </p>
       </div>
 
-      {/* Points Earned Summary Card */}
       <div className="mt-6 rounded-3xl border border-amber-200 bg-gradient-to-b from-amber-50/80 to-white p-5 shadow-sm">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Coins className="h-5 w-5 fill-amber-500 text-amber-500" />
             <span className="text-xs font-bold uppercase tracking-wider text-slate-600">
-              Total Points Earned
+              Simulated Points Earned
             </span>
           </div>
           <span className="text-xs font-bold text-amber-900">
-            ≈ ${estimatedUsd} USD
+            ≈ ${estimatedUsd} USD (simulated)
           </span>
         </div>
 
@@ -86,7 +83,6 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
           <span className="text-base font-bold text-amber-800">Points</span>
         </div>
 
-        {/* Breakdown Items */}
         <div className="space-y-2 border-t border-amber-200/60 pt-3 text-xs">
           <div className="flex justify-between text-slate-600">
             <span>Quiz Questions ({result.score} correct)</span>
@@ -117,7 +113,6 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
         </div>
       </div>
 
-      {/* Streak Notification Banner */}
       <div className="mt-4 flex items-center justify-between rounded-2xl border border-orange-200 bg-orange-50 p-4">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
@@ -137,7 +132,6 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
         </span>
       </div>
 
-      {/* Newly Unlocked Badges (if any) */}
       {result.newBadges.length > 0 && (
         <div className="mt-4 rounded-2xl border border-indigo-100 bg-indigo-50/70 p-4">
           <div className="flex items-center gap-1.5 font-bold text-xs text-indigo-900 mb-2">
@@ -164,7 +158,6 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
         </div>
       )}
 
-      {/* Sticky Bottom Action */}
       <div className="fixed bottom-0 left-0 right-0 z-20 border-t border-slate-200 bg-white/95 p-4 backdrop-blur-md">
         <div className="mx-auto max-w-md">
           <button

@@ -15,12 +15,10 @@ body {
   user-select: none;
 }
 
-/* Ensure accessible minimum touch target size */
 button, a {
   touch-action: manipulation;
 }
 
-/* Smooth transitions without layout shift */
 .tap-bounce:active {
   transform: scale(0.98);
 }

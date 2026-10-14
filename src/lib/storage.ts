@@ -56,10 +56,6 @@ export function resetUserState(): UserRewardState {
   return INITIAL_USER_STATE;
 }
 
-/**
- * Reviewer Helper: Fast-forwards the state so that the user's last completion was YESTERDAY.
- * This lets Kenpath evaluators test streak increments without waiting 24 hours.
- */
 export function simulateYesterdayCompletion(currentStreak = 2): UserRewardState {
   const yesterday = getYesterdayDateString();
   const mockState: UserRewardState = {

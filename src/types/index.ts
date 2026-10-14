@@ -9,7 +9,7 @@ export interface Question {
 }
 
 export interface DailyQuiz {
-  date: string; // YYYY-MM-DD
+  date: string;
   title: string;
   topic: string;
   description: string;
@@ -20,7 +20,7 @@ export type RewardType = 'daily_quiz' | 'streak_bonus' | 'badge_reward';
 
 export interface RewardHistoryItem {
   id: string;
-  date: string; // ISO string
+  date: string;
   displayDate: string;
   title: string;
   points: number;
@@ -41,8 +41,8 @@ export interface UserRewardState {
   totalPoints: number;
   currentStreak: number;
   bestStreak: number;
-  lastCompletedDate: string | null; // YYYY-MM-DD
-  completedDates: string[]; // List of YYYY-MM-DD
+  lastCompletedDate: string | null;
+  completedDates: string[];
   unlockedBadgeIds: string[];
   history: RewardHistoryItem[];
   soundEnabled: boolean;

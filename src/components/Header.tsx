@@ -38,7 +38,6 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-slate-100 bg-white/95 px-4 backdrop-blur-md">
-      {/* Brand Logo */}
       <div className="flex items-center gap-2">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 text-white shadow-sm shadow-indigo-200">
           <Sparkles className="h-5 w-5" />
@@ -50,15 +49,13 @@ export const Header: React.FC<HeaderProps> = ({
           {!isOnline && (
             <div className="flex items-center gap-1 text-[10px] font-medium text-amber-600">
               <WifiOff className="h-2.5 w-2.5" />
-              <span>Offline Mode</span>
+              <span>Offline (Local)</span>
             </div>
           )}
         </div>
       </div>
 
-      {/* Rewards & Controls */}
       <div className="flex items-center gap-2">
-        {/* Streak Pill */}
         <div
           title={`Current Streak: ${currentStreak} days`}
           className={`flex h-9 items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold transition-all ${
@@ -75,7 +72,6 @@ export const Header: React.FC<HeaderProps> = ({
           <span>{currentStreak}d</span>
         </div>
 
-        {/* Points Pill (Opens Ledger) */}
         <button
           onClick={() => {
             sounds.playClick(soundEnabled);
@@ -88,7 +84,6 @@ export const Header: React.FC<HeaderProps> = ({
           <span>{totalPoints}</span>
         </button>
 
-        {/* Sound Toggle */}
         <button
           onClick={() => {
             onToggleSound();

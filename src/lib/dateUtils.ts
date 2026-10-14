@@ -1,7 +1,3 @@
-/**
- * Date utilities formatted for local calendar dates without timezone drifts
- */
-
 export function formatDateToYYYYMMDD(date: Date): string {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -41,8 +37,8 @@ export function isSameDay(date1Str: string | null, date2Str: string): boolean {
 
 export interface DayStatus {
   dateStr: string;
-  dayLabel: string; // e.g. "Mon"
-  dayNumber: number; // e.g. 12
+  dayLabel: string;
+  dayNumber: number;
   isToday: boolean;
   isCompleted: boolean;
 }

@@ -3,9 +3,8 @@ import { Badge } from '../types';
 export const POINTS_PER_CORRECT_ANSWER = 10;
 export const TOTAL_QUESTIONS_PER_CHALLENGE = 5;
 
-// Monetary conversion simulation
-export const POINTS_TO_USD_RATIO = 0.001; // 100 points = $0.10 USD
-export const MIN_PAYOUT_POINTS = 500; // $0.50 minimum payout threshold
+export const POINTS_TO_USD_RATIO = 0.001;
+export const MIN_PAYOUT_POINTS = 500;
 
 export const LEVEL_TIERS = [
   { level: 1, name: 'Novice', minPoints: 0, maxPoints: 50 },

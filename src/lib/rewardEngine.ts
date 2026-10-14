@@ -61,16 +61,13 @@ export function calculateStreakUpdate(
   }
 
   if (isSameDay(lastCompletedDate, currentDateStr)) {
-    // Already did today's task
     return { newStreak: currentStreak, streakMaintained: true };
   }
 
   if (isConsecutiveDay(lastCompletedDate, currentDateStr)) {
-    // Yesterday was completed! Streak increments
     return { newStreak: currentStreak + 1, streakMaintained: true };
   }
 
-  // Missed a day or more: streak resets to 1
   return { newStreak: 1, streakMaintained: false };
 }
 
@@ -128,7 +125,6 @@ export function processQuizCompletion(
   updatedState: UserRewardState;
   result: QuizSubmissionResult;
 } {
-  // Check if today was already completed
   if (state.lastCompletedDate && isSameDay(state.lastCompletedDate, todayDateStr)) {
     return {
       updatedState: state,
@@ -144,7 +140,6 @@ export function processQuizCompletion(
     };
   }
 
-  // 1. Calculate streak
   const { newStreak } = calculateStreakUpdate(
     state.lastCompletedDate,
     todayDateStr,
@@ -152,10 +147,8 @@ export function processQuizCompletion(
   );
   const bestStreak = Math.max(state.bestStreak, newStreak);
 
-  // 2. Base points from quiz
   const basePoints = score * POINTS_PER_CORRECT_ANSWER;
 
-  // 3. Streak milestone bonus
   let streakBonus = 0;
   if (newStreak === 3) {
     streakBonus = STREAK_BONUSES[3];
@@ -163,12 +156,10 @@ export function processQuizCompletion(
     streakBonus = STREAK_BONUSES[7];
   }
 
-  // Intermediate points to evaluate badge qualification
   let runningPoints = state.totalPoints + basePoints + streakBonus;
   const newCompletedDates = Array.from(new Set([...state.completedDates, todayDateStr])).sort();
   const totalCompletedCount = newCompletedDates.length;
 
-  // 4. Badges check
   const newBadges = checkNewlyUnlockedBadges(state.unlockedBadgeIds, {
     totalPointsAfterQuiz: runningPoints,
     newStreak,
@@ -181,11 +172,9 @@ export function processQuizCompletion(
   const totalPoints = runningPoints + badgePoints;
   const totalEarnedInSession = basePoints + streakBonus + badgePoints;
 
-  // 5. Build transaction history items
   const nowIso = new Date().toISOString();
   const newHistoryItems: RewardHistoryItem[] = [];
 
-  // Base quiz reward
   if (basePoints > 0) {
     newHistoryItems.push({
       id: `quiz-${todayDateStr}-${Date.now()}`,
@@ -197,7 +186,6 @@ export function processQuizCompletion(
     });
   }
 
-  // Streak bonus
   if (streakBonus > 0) {
     newHistoryItems.push({
       id: `streak-${newStreak}-${Date.now()}`,
@@ -209,7 +197,6 @@ export function processQuizCompletion(
     });
   }
 
-  // Badge rewards
   for (const badge of newBadges) {
     newHistoryItems.push({
       id: `badge-${badge.id}-${Date.now()}`,

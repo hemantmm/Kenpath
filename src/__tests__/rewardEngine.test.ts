@@ -54,7 +54,6 @@ describe('Level Calculation', () => {
     const level = calculateLevel(75);
     expect(level.currentTier.level).toBe(2);
     expect(level.currentTier.name).toBe('Explorer');
-    // Tier 2 is 50 to 150 (span 100). 75 - 50 = 25 points -> 25%
     expect(level.progressPercent).toBe(25);
   });
 });
@@ -111,9 +110,6 @@ describe('processQuizCompletion Workflow', () => {
 
     expect(result.alreadyCompletedToday).toBe(false);
     expect(result.score).toBe(5);
-    // Base points = 5 * 10 = 50
-    // Badges unlocked: first_spark (10) + perfect_score (15) = 25
-    // Total earned = 75
     expect(result.pointsEarned).toBe(75);
     expect(updatedState.totalPoints).toBe(75);
     expect(updatedState.currentStreak).toBe(1);
@@ -151,7 +147,7 @@ describe('processQuizCompletion Workflow', () => {
       ...INITIAL_USER_STATE,
       totalPoints: 80,
       currentStreak: 2,
-      lastCompletedDate: '2026-10-11', // Yesterday
+      lastCompletedDate: '2026-10-11',
       completedDates: ['2026-10-10', '2026-10-11'],
       unlockedBadgeIds: ['first_spark'],
     };
@@ -165,11 +161,6 @@ describe('processQuizCompletion Workflow', () => {
 
     expect(result.newStreak).toBe(3);
     expect(result.streakBonus).toBe(20);
-    // Base points: 4 * 10 = 40
-    // Streak milestone bonus: 20
-    // Badge unlocked: streak_3 (+20 pts)
-    // Badge unlocked: points_100 (+25 pts, since total crossed 100)
-    // Points earned = 40 + 20 + 20 + 25 = 105 pts
     expect(result.pointsEarned).toBe(105);
     expect(updatedState.totalPoints).toBe(80 + 105);
     expect(updatedState.currentStreak).toBe(3);
